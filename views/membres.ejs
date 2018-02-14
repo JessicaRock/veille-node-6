@@ -17,6 +17,8 @@
 			 	<% for (p in element){ %>
 			 		<th><%= p %></th>
 			 	<% } %>
+			 	<th></th>
+			 	<th><input action = "http://127.0.0.1:8081/ajouter" method = "GET" type="submit" value="Ajouter" class="bouton" ></th>
 			</tr>
 		<% } %>
 	<% } %>
@@ -29,6 +31,8 @@
 			<th><%= elm.prenom %></th>
 			<td><%= elm.telephone %></td>
 			<td><%= elm.courriel %></td>
+			<td><input action = "http://127.0.0.1:8081/modifier" method = "GET" type="submit" value="Enregistrer (Modifier)" class="bouton" ></td>
+			<td><input action = "http://127.0.0.1:8081/supprimer" method = "GET" type="submit" value="Supprimer" class="bouton" ></td>
 		</tr>
 	<% } %>
  </table>
