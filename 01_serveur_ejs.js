@@ -1,10 +1,12 @@
 const express = require('express');
 const fs = require("fs");
 const app = express();
+const bodyParser= require('body-parser');
 const MongoClient = require('mongodb').MongoClient; // le pilote MongoDB
 const ObjectID = require('mongodb').ObjectID;
  var util = require("util");
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 /* on associe le moteur de vue au module «ejs» */
@@ -62,6 +64,45 @@ if (err) return console.log(err)
  res.redirect('/membres')  // redirige vers la route qui affiche la collection
  })
 })
+
+
+app.get('/modifier', function (req, res) {
+
+ console.log('la route /modifier')
+ console.log('**************************')
+ console.log(req.query)
+/*
+ if (req.body['_id'] != __________)
+ { 
+ console.log('sauvegarde') 
+ var oModif = {
+ "_id": ObjectID(req.body['_id']), 
+ nom: req.body._____,
+ prenom:req.body.______, 
+ telephone:req.body._______
+ }
+ var util = require("util");
+ console.log('util = ' + util.inspect(oModif));
+ }
+ else
+ {
+ console.log('insert')
+ console.log(req.body)
+ var oModif = {
+ nom: req.body.______,
+ prenom:req.body.______, 
+ telephone:req.body._______
+ }
+ }*/
+
+	/*db.collection('adresse').save(req.query, (err, result) => {
+		if (err) return console.log(err)
+		console.log('sauvegarder dans la BD')
+		res.redirect('/membres')
+
+	})*/
+})
+
 
 
 

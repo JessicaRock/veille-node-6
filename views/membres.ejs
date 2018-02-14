@@ -31,15 +31,18 @@
 	<% for (elm of membres) {%>
 		<tr>
 			<td><%= elm._id %></td>
-			<th><%= elm.nom %></th>
-			<th><%= elm.prenom %></th>
-			<td><%= elm.telephone %></td>
-			<td><%= elm.courriel %></td>
-			<td><input action = "http://127.0.0.1:8081/modifier" method = "GET" type="submit" value="Enregistrer (Modifier)" class="bouton" ></td>
+			<th contenteditable><%= elm.nom %></th>
+			<th contenteditable><%= elm.prenom %></th>
+			<td contenteditable><%= elm.telephone %></td>
+			<td contenteditable><%= elm.courriel %></td>
+			<td>
+				<form action = "http://127.0.0.1:8081/modifier" method = "GET">
+					<input type="submit" value="Enregistrer (Modifier)" class="bouton" >
+				</form>
+			</td>
 
 			<td>
 				<form action = "http://127.0.0.1:8081/supprimer/<%= elm._id %>" method = "GET">
-					<input type="hidden" name="id" value=<%= elm._id %>>
 					<input type="submit" value="Supprimer" class="bouton" >
 				</form>
 			</td>
