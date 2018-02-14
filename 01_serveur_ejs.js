@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require("fs");
 const app = express();
 const MongoClient = require('mongodb').MongoClient; // le pilote MongoDB
+const ObjectID = require('mongodb').ObjectID;
  var util = require("util");
 app.use(express.static('public'));
 
@@ -35,20 +36,36 @@ app.get('/', (req, res) => {
 
 
 
+
 app.get('/ajouter', function (req, res) {
 
  console.log('la route /ajouter')
 
- db.collection('adresse').save(req.query, (err, result) => {
- if (err) return console.log(err)
- console.log('sauvegarder dans la BD')
- res.redirect('/membres')
+	db.collection('adresse').save(req.query, (err, result) => {
+		if (err) return console.log(err)
+		console.log('sauvegarder dans la BD')
+		res.redirect('/membres')
 
+	})
+})
+
+
+app.get('/supprimer/:id', (req, res) => {
+ console.log(req.params.id)
+ //console.log(res)
+ var id = req.params.id
+console.log('***************************');
+ console.log(id)
+ db.collection('adresse').findOneAndDelete({"_id": ObjectID(req.params.id)}, (err, resultat) => {
+
+if (err) return console.log(err)
+ res.redirect('/membres')  // redirige vers la route qui affiche la collection
+ })
 })
 
 
 
-})
+
 
 
  let db // variable qui contiendra le lien sur la BD

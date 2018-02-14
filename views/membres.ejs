@@ -18,7 +18,11 @@
 			 		<th><%= p %></th>
 			 	<% } %>
 			 	<th></th>
-			 	<th><input action = "http://127.0.0.1:8081/ajouter" method = "GET" type="submit" value="Ajouter" class="bouton" ></th>
+			 	<th>
+			 		<form action = "http://127.0.0.1:8081/ajouter" method = "GET">
+			 			<input action = "http://127.0.0.1:8081/ajouter" method = "GET" type="submit" value="Ajouter" class="bouton" >
+			 		</form>
+			 	</th>
 			</tr>
 		<% } %>
 	<% } %>
@@ -32,7 +36,13 @@
 			<td><%= elm.telephone %></td>
 			<td><%= elm.courriel %></td>
 			<td><input action = "http://127.0.0.1:8081/modifier" method = "GET" type="submit" value="Enregistrer (Modifier)" class="bouton" ></td>
-			<td><input action = "http://127.0.0.1:8081/supprimer" method = "GET" type="submit" value="Supprimer" class="bouton" ></td>
+
+			<td>
+				<form action = "http://127.0.0.1:8081/supprimer/<%= elm._id %>" method = "GET">
+					<input type="hidden" name="id" value=<%= elm._id %>>
+					<input type="submit" value="Supprimer" class="bouton" >
+				</form>
+			</td>
 		</tr>
 	<% } %>
  </table>
