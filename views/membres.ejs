@@ -61,7 +61,8 @@
  <h1>Modification membre</h1>
 
 <form id='formModif' action = "/modifier" method = "POST">
-	Prénom: <input type = "text" name = "prenom" value=""> <br>
+	id: <input type = "text" name = "_id"> <br>
+	Prénom: <input type = "text" name = "prenom"> <br>
 	Nom: <input type = "text" name = "nom"> <br>
 	Téléphone: <input type = "text" name = "telephone"> <br>
 	Courriel: <input type = "text" name = "courriel"> <br>
@@ -101,10 +102,11 @@
 				let elmForm = document.getElementById('formModif');
 
 				let elmInput = elmForm.querySelectorAll('input');
-				elmInput[0].value = prenom;
-				elmInput[1].value = nom;
-				elmInput[2].value = telephone;
-				elmInput[3].value = courriel;
+				elmInput[0].value = id;
+				elmInput[1].value = prenom;
+				elmInput[2].value = nom;
+				elmInput[3].value = telephone;
+				elmInput[4].value = courriel;
 
 				elmForm.submit()
 
