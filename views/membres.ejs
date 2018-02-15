@@ -5,7 +5,6 @@
  <meta charset="UTF-8">
  <title>Mon Application - Membres</title>
  <link rel="stylesheet" type="text/css" href="css/style.css">
- <!--script type="text/javascript" src="public/js/modifier.js"></script-->
 
 </head>
 <body>
@@ -57,16 +56,12 @@
  </table>
 
 
-
- <h1>Modification membre</h1>
-
 <form id='formModif' action = "/modifier" method = "POST">
-	id: <input type = "text" name = "_id"> <br>
-	Prénom: <input type = "text" name = "prenom"> <br>
-	Nom: <input type = "text" name = "nom"> <br>
-	Téléphone: <input type = "text" name = "telephone"> <br>
-	Courriel: <input type = "text" name = "courriel"> <br>
-	<input type = "submit" value = "Submit" class="bouton">
+	<input type = "hidden" name = "_id">
+	<input type = "hidden" name = "prenom">
+	<input type = "hidden" name = "nom">
+	<input type = "hidden" name = "telephone">
+	<input type = "hidden" name = "courriel">
 </form>
 
 
@@ -82,40 +77,7 @@
 	 Courriel: <input type = "text" name = "courriel"> <br>
 	 <input type = "submit" value = "Submit" class="bouton">
  </form>
- <script type="text/javascript">
- 	(function() {
-		console.log('click modifier');
-		let aBtnModifier = document.querySelectorAll('.modifier');
 
-			console.log(aBtnModifier);
-		for (elm of aBtnModifier) {
-			elm.addEventListener('click', function(){
-
-
-				let tr = this.parentNode.parentNode;
-				let id = tr.children[0].innerHTML;
-				let prenom = tr.children[1].innerHTML;
-				let nom = tr.children[2].innerHTML;
-				let telephone = tr.children[3].innerHTML;
-				let courriel = tr.children[4].innerHTML;
-
-				let elmForm = document.getElementById('formModif');
-
-				let elmInput = elmForm.querySelectorAll('input');
-				elmInput[0].value = id;
-				elmInput[1].value = prenom;
-				elmInput[2].value = nom;
-				elmInput[3].value = telephone;
-				elmInput[4].value = courriel;
-
-				elmForm.submit()
-
-			})
-		}
-
-	})();
- 
- </script>
-
+ <script type="text/javascript" src="js/modifier.js"></script>
 </body>
 </html>
