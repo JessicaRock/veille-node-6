@@ -4,6 +4,7 @@
  <meta charset="UTF-8">
  <title>Mon Application - Membres</title>
  <link rel="stylesheet" type="text/css" href="css/style.css">
+ <script type="text/javascript" src="../public/js/modifier.js"></script>
 </head>
 <body>
  <h1>Membres</h1>
@@ -15,13 +16,14 @@
 			<tr>
 				<% noLigne++ %>
 			 	<% for (p in element){ %>
-			 		<th><%= p %></th>
+			 		<th><a href=http://localhost:8081/trier/<%= p %>/asc ><%= p %></a></th>
 			 	<% } %>
 			 	<th></th>
 			 	<th>
-			 		<form action = "http://127.0.0.1:8081/ajouter" method = "GET">
+			 		<!--form action = "http://127.0.0.1:8081/ajouter" method = "GET">
 			 			<input action = "http://127.0.0.1:8081/ajouter" method = "GET" type="submit" value="Ajouter" class="bouton" >
-			 		</form>
+			 		</form-->
+			 		<a href=http://localhost:8081/ajouter > Ajouter </a>
 			 	</th>
 			</tr>
 		<% } %>
@@ -36,19 +38,36 @@
 			<td contenteditable><%= elm.telephone %></td>
 			<td contenteditable><%= elm.courriel %></td>
 			<td>
-				<form action = "http://127.0.0.1:8081/modifier" method = "GET">
+				<!--form action = "http://127.0.0.1:8081/modifier" method = "GET">
 					<input type="submit" value="Enregistrer (Modifier)" class="bouton" >
-				</form>
+				</form-->
+				<a href=http://localhost:8081/modifier class="modifier" > Enregistrer (Modifier) </a>
 			</td>
 
 			<td>
-				<form action = "http://127.0.0.1:8081/supprimer/<%= elm._id %>" method = "GET">
+				<!--form action = "http://127.0.0.1:8081/supprimer/<%= elm._id %>" method = "GET">
 					<input type="submit" value="Supprimer" class="bouton" >
-				</form>
+				</form-->
+				<a href=http://localhost:8081/supprimer/<%= elm._id %> >Supprimer </a>
 			</td>
 		</tr>
 	<% } %>
  </table>
+
+
+
+ <h1>Modification membre</h1>
+
+<form id='formModif' action = "http://127.0.0.1:8081/modifier" method = "POST">
+	Prénom: <input type = "text" name = "prenom" value=""> <br>
+	Nom: <input type = "text" name = "nom"> <br>
+	Téléphone: <input type = "text" name = "telephone"> <br>
+	Courriel: <input type = "text" name = "courriel"> <br>
+	<input type = "submit" value = "Submit" class="bouton">
+</form>
+
+
+
 
 
  <h1>Inscription membre</h1>

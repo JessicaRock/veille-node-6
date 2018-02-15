@@ -39,6 +39,34 @@ app.get('/', (req, res) => {
 
 
 
+
+
+
+app.get('/trier/:cle/:ordre', function (req, res) {
+
+	let cle = req.params.cle
+
+	console.log(cle);
+
+	console.log(req.params.ordre);
+	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
+	console.log(ordre);
+	let cursor = db.collection('adresse').find().sort(cle, ordre).toArray(function(err, resultat){
+		if(ordre === 1) {
+			ordre = 'desc';
+		} else {
+			ordre = 'asc';
+		}
+ 		//res.render('membres.ejs', {membres: resultat, ______, _________ })
+ 		console.log('+++++++++++++++++++++++++++++++++++++++++++')
+ 		console.log(ordre);
+ 		console.log(resultat);
+		console.log('util = ' + util.inspect(resultat));
+ 		res.render('membres.ejs', {membres: resultat, ordre});
+ 	})
+})
+
+
 app.get('/ajouter', function (req, res) {
 
  console.log('la route /ajouter')
@@ -66,21 +94,27 @@ if (err) return console.log(err)
 })
 
 
-app.get('/modifier', function (req, res) {
+app.post('/modifier', function (req, res) {
 
  console.log('la route /modifier')
  console.log('**************************')
- console.log(req.query)
-/*
- if (req.body['_id'] != __________)
- { 
+ //console.log(req.body)
+ console.log('util = ' + util.inspect(req.body));
+
+ //if (req.body['_id'] != ''){ 
  console.log('sauvegarde') 
- var oModif = {
+ /*var oModif = {
  "_id": ObjectID(req.body['_id']), 
- nom: req.body._____,
- prenom:req.body.______, 
- telephone:req.body._______
- }
+ nom: req.body.nom,
+ prenom:req.body.prenom, 
+ telephone:req.body.telephone,
+ courriel:req.body.courriel
+ }*/
+//}
+
+ //console.log(oModif);
+
+ /*
  var util = require("util");
  console.log('util = ' + util.inspect(oModif));
  }
@@ -101,6 +135,8 @@ app.get('/modifier', function (req, res) {
 		res.redirect('/membres')
 
 	})*/
+
+	res.redirect('/membres');
 })
 
 
