@@ -46,23 +46,20 @@ app.get('/trier/:cle/:ordre', function (req, res) {
 
 	let cle = req.params.cle
 
-	console.log(cle);
+	console.log(cle + ' ' + dernierClic);
 
-	console.log(req.params.ordre);
 	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
-	console.log(ordre);
+
 	let cursor = db.collection('adresse').find().sort(cle, ordre).toArray(function(err, resultat){
 		if(ordre == 1) {
 			ordre = 'desc';
 		} else {
 			ordre = 'asc';
 		}
- 		//res.render('membres.ejs', {membres: resultat, ______, _________ })
- 		console.log('+++++++++++++++++++++++++++++++++++++++++++')
- 		console.log(ordre);
- 		console.log(resultat);
+		//ordre == 1 ? 'asc' : 'desc';
+
 		console.log('util = ' + util.inspect(resultat));
- 		res.render('membres.ejs', {membres: resultat, ordre});
+ 		res.render('membres.ejs', {membres: resultat, ordre_url:ordre, cle_url:cle});
  	})
 })
 

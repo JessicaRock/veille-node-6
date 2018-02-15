@@ -4,7 +4,7 @@
 <head>
  <meta charset="UTF-8">
  <title>Mon Application - Membres</title>
- <link rel="stylesheet" type="text/css" href="css/style.css">
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 </head>
 <body>
@@ -12,13 +12,19 @@
 
  <table class="tableau">
 	<% let noLigne = 0 %>
+	<% if(typeof ordre_url == 'undefined') {ordre_url = 'asc'} %>
 	<% for(element of membres){ %>
 		<% if (noLigne==0){ %>
 			<tr>
 				<% noLigne++ %>
-			 	<% for (p in element){ %>
+			 	<!--<% for (p in element){ %>
 			 		<th><a href=http://localhost:8081/trier/<%= p %>/asc ><%= p %></a></th>
-			 	<% } %>
+			 	<% } %>-->
+			 	<th><a href=http://localhost:8081/trier/_id/<%= ordre_url %> >_id</a></th>
+			 	<th><a href=http://localhost:8081/trier/prenom/<%= ordre_url %> >prenom</a></th>
+			 	<th><a href=http://localhost:8081/trier/nom/<%= ordre_url %> >nom</a></th>
+			 	<th><a href=http://localhost:8081/trier/telephone/<%= ordre_url %> >telephone</a></th>
+			 	<th><a href=http://localhost:8081/trier/courriel/<%= ordre_url %> >courriel</a></th>
 			 	<th></th>
 			 	<th>
 			 		<!--form action = "http://127.0.0.1:8081/ajouter" method = "GET">
