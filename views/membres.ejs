@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
+<%- include('composants/head') %> 
 <head>
  <meta charset="UTF-8">
  <title>Mon Application - Membres</title>
  <link rel="stylesheet" type="text/css" href="css/style.css">
- <script type="text/javascript" src="../public/js/modifier.js"></script>
+ <!--script type="text/javascript" src="public/js/modifier.js"></script-->
+
 </head>
 <body>
  <h1>Membres</h1>
@@ -33,15 +35,15 @@
 	<% for (elm of membres) {%>
 		<tr>
 			<td><%= elm._id %></td>
-			<th contenteditable><%= elm.nom %></th>
 			<th contenteditable><%= elm.prenom %></th>
+			<th contenteditable><%= elm.nom %></th>
 			<td contenteditable><%= elm.telephone %></td>
 			<td contenteditable><%= elm.courriel %></td>
 			<td>
 				<!--form action = "http://127.0.0.1:8081/modifier" method = "GET">
 					<input type="submit" value="Enregistrer (Modifier)" class="bouton" >
 				</form-->
-				<a href=http://localhost:8081/modifier class="modifier" > Enregistrer (Modifier) </a>
+				<a href="#" class="modifier" > Enregistrer (Modifier) </a>
 			</td>
 
 			<td>
@@ -58,7 +60,7 @@
 
  <h1>Modification membre</h1>
 
-<form id='formModif' action = "http://127.0.0.1:8081/modifier" method = "POST">
+<form id='formModif' action = "/modifier" method = "POST">
 	Prénom: <input type = "text" name = "prenom" value=""> <br>
 	Nom: <input type = "text" name = "nom"> <br>
 	Téléphone: <input type = "text" name = "telephone"> <br>
@@ -79,7 +81,39 @@
 	 Courriel: <input type = "text" name = "courriel"> <br>
 	 <input type = "submit" value = "Submit" class="bouton">
  </form>
+ <script type="text/javascript">
+ 	(function() {
+		console.log('click modifier');
+		let aBtnModifier = document.querySelectorAll('.modifier');
 
+			console.log(aBtnModifier);
+		for (elm of aBtnModifier) {
+			elm.addEventListener('click', function(){
+
+
+				let tr = this.parentNode.parentNode;
+				let id = tr.children[0].innerHTML;
+				let prenom = tr.children[1].innerHTML;
+				let nom = tr.children[2].innerHTML;
+				let telephone = tr.children[3].innerHTML;
+				let courriel = tr.children[4].innerHTML;
+
+				let elmForm = document.getElementById('formModif');
+
+				let elmInput = elmForm.querySelectorAll('input');
+				elmInput[0].value = prenom;
+				elmInput[1].value = nom;
+				elmInput[2].value = telephone;
+				elmInput[3].value = courriel;
+
+				elmForm.submit()
+
+			})
+		}
+
+	})();
+ 
+ </script>
 
 </body>
 </html>

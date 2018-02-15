@@ -1,3 +1,7 @@
+(function() {
+		console.log('click modifier');
+
+//fonction autoexécutante???
 let aBtnModifier = document.querySelectorAll('.modifier');
 
 for (elm of aBtnModifier) {
@@ -24,3 +28,5 @@ for (elm of aBtnModifier) {
 
  	})
  }
+
+})();

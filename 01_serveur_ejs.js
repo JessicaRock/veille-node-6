@@ -52,7 +52,7 @@ app.get('/trier/:cle/:ordre', function (req, res) {
 	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
 	console.log(ordre);
 	let cursor = db.collection('adresse').find().sort(cle, ordre).toArray(function(err, resultat){
-		if(ordre === 1) {
+		if(ordre == 1) {
 			ordre = 'desc';
 		} else {
 			ordre = 'asc';
@@ -99,20 +99,19 @@ app.post('/modifier', function (req, res) {
  console.log('la route /modifier')
  console.log('**************************')
  //console.log(req.body)
- console.log('util = ' + util.inspect(req.body));
+ console.log('util = ' + util.inspect(req.body['_id']));
 
- //if (req.body['_id'] != ''){ 
+ //if (req.body['_id'] != ''){
  console.log('sauvegarde') 
- /*var oModif = {
- "_id": ObjectID(req.body['_id']), 
+ var oModif = {
+ "_id": ObjectID(req.body['_id']),
  nom: req.body.nom,
  prenom:req.body.prenom, 
  telephone:req.body.telephone,
  courriel:req.body.courriel
- }*/
+ }
 //}
 
- //console.log(oModif);
 
  /*
  var util = require("util");
@@ -129,14 +128,13 @@ app.post('/modifier', function (req, res) {
  }
  }*/
 
-	/*db.collection('adresse').save(req.query, (err, result) => {
+
+	db.collection('adresse').save(oModif, (err, result) => {
 		if (err) return console.log(err)
 		console.log('sauvegarder dans la BD')
 		res.redirect('/membres')
 
-	})*/
-
-	res.redirect('/membres');
+	})
 })
 
 
