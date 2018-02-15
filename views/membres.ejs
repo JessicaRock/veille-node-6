@@ -27,9 +27,6 @@
 			 	<th><a href=http://localhost:8081/trier/courriel/<%= ordre_url %> >courriel</a></th>
 			 	<th></th>
 			 	<th>
-			 		<!--form action = "http://127.0.0.1:8081/ajouter" method = "GET">
-			 			<input action = "http://127.0.0.1:8081/ajouter" method = "GET" type="submit" value="Ajouter" class="bouton" >
-			 		</form-->
 			 		<a href=http://localhost:8081/ajouter > Ajouter </a>
 			 	</th>
 			</tr>
@@ -45,16 +42,10 @@
 			<td contenteditable><%= elm.telephone %></td>
 			<td contenteditable><%= elm.courriel %></td>
 			<td>
-				<!--form action = "http://127.0.0.1:8081/modifier" method = "GET">
-					<input type="submit" value="Enregistrer (Modifier)" class="bouton" >
-				</form-->
 				<a href="#" class="modifier" > Enregistrer (Modifier) </a>
 			</td>
 
 			<td>
-				<!--form action = "http://127.0.0.1:8081/supprimer/<%= elm._id %>" method = "GET">
-					<input type="submit" value="Supprimer" class="bouton" >
-				</form-->
 				<a href=http://localhost:8081/supprimer/<%= elm._id %> >Supprimer </a>
 			</td>
 		</tr>
